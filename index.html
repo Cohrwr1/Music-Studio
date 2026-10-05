@@ -311,8 +311,14 @@
       -webkit-overflow-scrolling: touch;
     }
 
+    .desktop-table-view { display: block; }
+    .mobile-fee-cards-view { display: none; }
+
     /* --- MOBILE RESPONSIVE MEDIA QUERIES --- */
     @media (max-width: 768px) {
+      .desktop-table-view { display: none !important; }
+      .mobile-fee-cards-view { display: flex !important; flex-direction: column; gap: 0.85rem; }
+
       .mobile-bar { display: flex; }
       .mobile-bottom-nav { display: flex; }
       .sidebar-overlay.active { display: block; }
@@ -2000,7 +2006,8 @@ function updateSheet(ss, sheetName, headers, rows) {
                       </div>
                     </div>
 
-                    <div className="table-responsive">
+                    {/* Desktop Table View */}
+                    <div className="table-responsive desktop-table-view">
                       <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left', fontSize: '0.875rem', minWidth: '750px' }}>
                         <thead>
                           <tr style={{ background: 'var(--bg-surface-subtle)', color: 'var(--text-muted)' }}>
@@ -2048,6 +2055,49 @@ function updateSheet(ss, sheetName, headers, rows) {
                           })}
                         </tbody>
                       </table>
+                    </div>
+
+                    {/* Mobile Fee Cards View */}
+                    <div className="mobile-fee-cards-view">
+                      {filteredStudents.map(s => {
+                        const limit = getPackageLimit(s.packageType);
+                        const count = s.completedClassesCount || 0;
+                        const isExpired = count >= limit;
+
+                        return (
+                          <div key={s.id} style={{ background: 'var(--bg-app)', border: '1px solid var(--border-color)', borderRadius: 'var(--radius-lg)', padding: '1rem', display: 'flex', flexDirection: 'column', gap: '0.65rem' }}>
+                            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                              <div>
+                                <h4 style={{ fontSize: '1rem', fontWeight: 800 }}>{s.name}</h4>
+                                <span style={{ fontSize: '0.775rem', color: 'var(--primary)', fontWeight: 700 }}>{s.musicClass}</span>
+                              </div>
+                              {userRole === 'owner' && (
+                                <button onClick={() => handleOpenEditStudent(s)} className="btn-edit" style={{ fontSize: '0.75rem', padding: '0.35rem 0.65rem' }}>
+                                  <i className="fa-solid fa-pen-to-square"></i> Edit
+                                </button>
+                              )}
+                            </div>
+
+                            <div style={{ fontSize: '0.8rem', color: '#7E22CE', fontWeight: 700 }}>
+                              📦 {s.packageType || '4 Classes Package (₹6,000)'}
+                            </div>
+
+                            {renderClassProgressBar(s)}
+
+                            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontSize: '0.775rem', color: 'var(--text-muted)' }}>
+                              <span>📅 Last Class: <strong>{s.lastClassDate || 'N/A'}</strong></span>
+                              <span style={{ fontWeight: 700, color: isExpired ? '#B91C1C' : 'var(--text-main)' }}>
+                                {count}/{limit} Classes {isExpired ? '⚠️ Due' : ''}
+                              </span>
+                            </div>
+
+                            <div style={{ paddingTop: '0.5rem', borderTop: '1px solid var(--border-color)', display: 'flex', flexDirection: 'column', gap: '0.35rem' }}>
+                              <span style={{ fontSize: '0.75rem', fontWeight: 700, color: 'var(--text-muted)' }}>Set Payment Status:</span>
+                              {renderPaymentButtonGroup(s)}
+                            </div>
+                          </div>
+                        );
+                      })}
                     </div>
                   </div>
                 </div>
