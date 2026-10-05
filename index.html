@@ -17,6 +17,7 @@
   
   <!-- FontAwesome Icons via CDN -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
   <style>
     :root {
       --bg-app: #F4F6FC;
@@ -37,18 +38,22 @@
       --present-border: #A7F3D0;
       --present-text: #047857;
       --present-accent: #10B981;
+
       --absent-bg: #FEF2F2;
       --absent-border: #FECACA;
       --absent-text: #B91C1C;
       --absent-accent: #EF4444;
+
       --pending-bg: #FFFBEB;
       --pending-border: #FDE68A;
       --pending-text: #B45309;
+
       --radius-sm: 8px;
       --radius-md: 12px;
       --radius-lg: 16px;
       --radius-xl: 20px;
       --radius-full: 9999px;
+
       --shadow-sm: 0 2px 5px rgba(0, 0, 0, 0.03);
       --shadow-md: 0 8px 24px -4px rgba(99, 102, 241, 0.08);
       --shadow-lg: 0 16px 32px -8px rgba(15, 23, 42, 0.12);
@@ -56,7 +61,9 @@
       --font-main: 'Plus Jakarta Sans', sans-serif;
       --font-heading: 'Outfit', var(--font-main);
     }
+
     * { box-sizing: border-box; margin: 0; padding: 0; }
+
     body {
       font-family: var(--font-main);
       background: linear-gradient(135deg, #F0F4FF 0%, #F5F3FF 50%, #EEF2FF 100%);
@@ -66,7 +73,9 @@
       min-height: 100vh;
       -webkit-font-smoothing: antialiased;
     }
+
     h1, h2, h3, h4 { font-family: var(--font-heading); font-weight: 700; color: var(--text-main); }
+
     button {
       font-family: var(--font-main);
       cursor: pointer;
@@ -75,10 +84,12 @@
       transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
       touch-action: manipulation;
     }
+
     input, select, textarea {
       font-family: var(--font-main);
       font-size: 0.925rem;
     }
+
     .app-layout { display: flex; min-height: 100vh; position: relative; }
     
     .sidebar {
@@ -94,6 +105,7 @@
       z-index: 100;
       transition: transform 0.3s ease;
     }
+
     .nav-btn {
       display: flex;
       align-items: center;
@@ -112,12 +124,14 @@
       font-weight: 700;
       box-shadow: 0 4px 14px rgba(99, 102, 241, 0.35);
     }
+
     .main-content {
       flex: 1;
       display: flex;
       flex-direction: column;
       min-width: 0;
     }
+
     header {
       background: rgba(255, 255, 255, 0.88);
       backdrop-filter: blur(12px);
@@ -132,6 +146,7 @@
       top: 0;
       z-index: 90;
     }
+
     .mobile-bar {
       display: none;
       background: rgba(255, 255, 255, 0.95);
@@ -145,6 +160,7 @@
       z-index: 110;
       box-shadow: var(--shadow-sm);
     }
+
     .sidebar-overlay {
       display: none;
       position: fixed;
@@ -153,12 +169,14 @@
       backdrop-filter: blur(4px);
       z-index: 95;
     }
+
     .content-area {
       padding: 1.75rem 2rem;
       max-width: 1400px;
       margin: 0 auto;
       width: 100%;
     }
+
     .card {
       background: var(--bg-surface);
       backdrop-filter: blur(12px);
@@ -167,6 +185,7 @@
       padding: 1.35rem 1.65rem;
       box-shadow: var(--shadow-md);
     }
+
     .btn-primary {
       background: var(--primary-gradient);
       color: white;
@@ -179,6 +198,7 @@
       box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
     }
     .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 6px 16px rgba(99, 102, 241, 0.4); }
+
     .btn-secondary {
       background: rgba(241, 245, 249, 0.9);
       color: var(--text-main);
@@ -191,6 +211,7 @@
       gap: 0.5rem;
     }
     .btn-secondary:hover { background: #E2E8F0; transform: translateY(-1px); }
+
     .btn-edit {
       background: var(--primary-light);
       color: var(--primary);
@@ -204,6 +225,7 @@
       gap: 0.35rem;
     }
     .btn-edit:hover { background: #E0E7FF; transform: translateY(-1px); }
+
     .badge {
       display: inline-flex;
       align-items: center;
@@ -216,6 +238,7 @@
     .badge-present { background: var(--present-bg); color: var(--present-text); border: 1px solid var(--present-border); }
     .badge-absent { background: var(--absent-bg); color: var(--absent-text); border: 1px solid var(--absent-border); }
     .badge-pending { background: var(--pending-bg); color: var(--pending-text); border: 1px solid var(--pending-border); }
+
     .modal-overlay {
       position: fixed; inset: 0; background: rgba(15, 23, 42, 0.5);
       backdrop-filter: blur(6px); display: flex; align-items: center; justify-content: center; z-index: 999; padding: 1rem;
@@ -227,15 +250,18 @@
     .modal-header { padding: 1.25rem 1.5rem; border-bottom: 1px solid var(--border-color); display: flex; align-items: center; justify-content: space-between; }
     .modal-body { padding: 1.5rem; overflow-y: auto; }
     .modal-footer { padding: 1rem 1.5rem; border-top: 1px solid var(--border-color); display: flex; justify-content: flex-end; gap: 0.75rem; background: var(--bg-app); }
+
     .table-responsive {
       width: 100%;
       overflow-x: auto;
       -webkit-overflow-scrolling: touch;
     }
+
     /* --- MOBILE RESPONSIVE MEDIA QUERIES --- */
     @media (max-width: 768px) {
       .mobile-bar { display: flex; }
       .sidebar-overlay.active { display: block; }
+
       .sidebar {
         position: fixed;
         top: 0;
@@ -247,26 +273,33 @@
       .sidebar.open {
         transform: translateX(0);
       }
+
       header {
         display: none;
       }
+
       .content-area {
         padding: 1rem;
       }
+
       .card {
         padding: 1.1rem;
         border-radius: var(--radius-lg);
       }
+
       .filter-bar {
         grid-template-columns: 1fr !important;
       }
+
       .student-grid {
         grid-template-columns: 1fr !important;
       }
+
       .modal-content {
         max-width: 95vw;
         max-height: 92vh;
       }
+
       .modal-body {
         padding: 1rem;
       }
@@ -275,21 +308,26 @@
 </head>
 <body>
   <div id="root"></div>
+
   <script type="text/babel">
     const { useState, useEffect } = React;
+
     const MUSIC_LESSON_OPTIONS = ['Vocal Lessons', 'Piano Lessons', 'App Lessons'];
+
     // --- TUITION PACKAGE OPTIONS ---
     const PACKAGE_OPTIONS = [
       { id: 'pkg_4', label: '4 Classes Package (₹6,000)', price: 6000 },
       { id: 'pkg_12', label: '12 Classes Package (₹15,000)', price: 15000 },
       { id: 'pkg_custom', label: 'Custom Package', price: 0 }
     ];
+
     const getPackageLimit = (pkgType) => {
       const p = (pkgType || '').toLowerCase();
       if (p.includes('12')) return 12;
       if (p.includes('4')) return 4;
       return 4;
     };
+
     const calculateAge = (dobString) => {
       if (!dobString) return 0;
       const today = new Date();
@@ -301,12 +339,14 @@
       }
       return age > 0 ? age : 0;
     };
+
     const getDayNameFromDate = (dateStr) => {
       if (!dateStr) return 'Monday';
       const parts = dateStr.split('-');
       const d = new Date(parts[0], parts[1] - 1, parts[2]);
       return d.toLocaleDateString('en-US', { weekday: 'long' });
     };
+
     const generateInitialMusicStudents = () => {
       const firstNames = ['Aarav', 'Ananya', 'Rohan', 'Priya', 'Vivaan', 'Diya', 'Aditya', 'Sanya', 'Kabir', 'Isha', 'Arjun', 'Sneha', 'Vihaan', 'Tanvi', 'Dev', 'Kavya', 'Reyansh', 'Meera', 'Krishna', 'Riya', 'Ishaan', 'Kriti', 'Shaurya', 'Aanya', 'Yash', 'Avani', 'Ayush', 'Zara', 'Dhruv', 'Pari', 'Neer', 'Bhavya', 'Atharv', 'Nisha', 'Rudra', 'Prisha', 'Manan', 'Tanya', 'Samarth', 'Anika', 'Siddharth', 'Navya', 'Harsh', 'Tara', 'Karan'];
       const lastNames = ['Sharma', 'Verma', 'Gupta', 'Patel', 'Singh', 'Kumar', 'Mehta', 'Joshi', 'Shah', 'Nair', 'Rao', 'Chopra', 'Malhotra', 'Bhatia', 'Kapoor'];
@@ -320,7 +360,9 @@
         'Sunday Only',
         'Tue & Fri'
       ];
+
       const colors = ['#6366F1', '#0284C7', '#0D9488', '#16A34A', '#D97706', '#9333EA', '#DB2777'];
+
       return Array.from({ length: 45 }, (_, i) => {
         const fn = firstNames[i % firstNames.length];
         const ln = lastNames[i % lastNames.length];
@@ -330,6 +372,7 @@
         const dob = `${birthYear}-${birthMonth}-${birthDay}`;
         const age = calculateAge(dob);
         const is12Pkg = i % 3 === 0;
+
         return {
           id: `music_std_${i + 1}`,
           name: `${fn} ${ln}`,
@@ -349,12 +392,14 @@
         };
       });
     };
+
     const APPS_SCRIPT_CODE = `function doGet(e) {
   var ss = SpreadsheetApp.getActiveSpreadsheet();
   var sheet = ss.getSheetByName("Students") || ss.getSheets()[0];
   var data = sheet.getDataRange().getValues();
   return ContentService.createTextOutput(JSON.stringify({ status: "success", data: data })).setMimeType(ContentService.MimeType.JSON);
 }
+
 function doPost(e) {
   try {
     var contents = JSON.parse(e.postData.contents);
@@ -368,12 +413,14 @@ function doPost(e) {
     return ContentService.createTextOutput(JSON.stringify({ status: "error", message: err.toString() })).setMimeType(ContentService.MimeType.JSON);
   }
 }
+
 function updateSheet(ss, sheetName, headers, rows) {
   var sheet = ss.getSheetByName(sheetName) || ss.insertSheet(sheetName);
   sheet.clear();
   sheet.appendRow(headers);
   if (rows && rows.length > 0) sheet.getRange(2, 1, rows.length, headers.length).setValues(rows);
 }`;
+
     const parseCSVRows = (text) => {
       const lines = text.split(/\r?\n/).filter(l => l.trim() !== '');
       return lines.map(line => {
@@ -398,6 +445,7 @@ function updateSheet(ss, sheetName, headers, rows) {
         return result;
       });
     };
+
     // --- MAIN APP COMPONENT ---
     function App() {
       // Security Dual-Passcode Lock System (Owner vs User)
@@ -407,40 +455,60 @@ function updateSheet(ss, sheetName, headers, rows) {
       const [userRole, setUserRole] = useState(() => sessionStorage.getItem('harmony_user_role') || 'owner');
       const [enteredPin, setEnteredPin] = useState('');
       const [pinError, setPinError] = useState('');
+
       // Change Passcode Form (Owner Only)
       const [isChangePasscodeOpen, setIsChangePasscodeOpen] = useState(false);
       const [currentOwnerPinCheck, setCurrentOwnerPinCheck] = useState('');
       const [newOwnerPinForm, setNewOwnerPinForm] = useState('');
       const [newUserPinForm, setNewUserPinForm] = useState('');
       const [changePasscodeError, setChangePasscodeError] = useState('');
+
       // Quick Class Progress Edit Modal State
       const [studentForProgressEdit, setStudentForProgressEdit] = useState(null);
       const [customCompletedCount, setCustomCompletedCount] = useState(0);
       const [customLastClassDate, setCustomLastClassDate] = useState('');
+
+      // Reschedule & Extra Class Modal States
+      const [isRescheduleOpen, setIsRescheduleOpen] = useState(false);
+      const [studentForReschedule, setStudentForReschedule] = useState(null);
+      const [rescheduleTargetDate, setRescheduleTargetDate] = useState(new Date().toISOString().split('T')[0]);
+      const [rescheduleOriginalDate, setRescheduleOriginalDate] = useState(new Date().toISOString().split('T')[0]);
+      const [rescheduleReason, setRescheduleReason] = useState('');
+
+      const [isExtraClassOpen, setIsExtraClassOpen] = useState(false);
+      const [studentForExtraClass, setStudentForExtraClass] = useState(null);
+      const [extraClassDate, setExtraClassDate] = useState(new Date().toISOString().split('T')[0]);
+      const [extraClassNotes, setExtraClassNotes] = useState('Extra practice session');
+
       const [activeTab, setActiveTab] = useState('attendance');
       const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
       const [students, setStudents] = useState(() => {
         const local = localStorage.getItem('harmony_music_students');
         return local ? JSON.parse(local) : [];
       });
+
       const [attendance, setAttendance] = useState(() => {
         const local = localStorage.getItem('harmony_music_attendance');
         if (local) return JSON.parse(local);
         const today = new Date().toISOString().split('T')[0];
         return [{ id: `${today}_All`, date: today, className: 'All', records: {} }];
       });
+
       const [sheetUrl, setSheetUrl] = useState(() => localStorage.getItem('harmony_sheet_url') || '');
       const [isSyncing, setIsSyncing] = useState(false);
       const [selectedDate, setSelectedDate] = useState(new Date().toISOString().split('T')[0]);
       const [selectedLessonFilter, setSelectedLessonFilter] = useState('All');
       const [showOnlyTodayScheduled, setShowOnlyTodayScheduled] = useState(true);
       const [searchQuery, setSearchQuery] = useState('');
+
       // Modal States
       const [isAddStudentOpen, setIsAddStudentOpen] = useState(false);
       const [isEditStudentOpen, setIsEditStudentOpen] = useState(false);
       const [studentToEdit, setStudentToEdit] = useState(null);
       const [isPasteDataOpen, setIsPasteDataOpen] = useState(false);
       const [pastedText, setPastedText] = useState('');
+
       const [formData, setFormData] = useState({
         name: '',
         dob: '2005-01-15',
@@ -456,8 +524,10 @@ function updateSheet(ss, sheetName, headers, rows) {
         lastClassDate: new Date().toISOString().split('T')[0],
         feeStatus: 'paid'
       });
+
       useEffect(() => { localStorage.setItem('harmony_music_students', JSON.stringify(students)); }, [students]);
       useEffect(() => { localStorage.setItem('harmony_music_attendance', JSON.stringify(attendance)); }, [attendance]);
+
       // Role-Based Unlock Handler
       const handleUnlockStudio = (e) => {
         e.preventDefault();
@@ -480,6 +550,7 @@ function updateSheet(ss, sheetName, headers, rows) {
           setPinError('❌ Incorrect Passcode. Please try again!');
         }
       };
+
       const handleLockStudio = () => {
         sessionStorage.removeItem('harmony_is_unlocked');
         sessionStorage.removeItem('harmony_user_role');
@@ -487,6 +558,7 @@ function updateSheet(ss, sheetName, headers, rows) {
         setUserRole(null);
         setIsMobileMenuOpen(false);
       };
+
       // Owner-Only Dual Passcode Change Handler
       const handleChangePasscode = (e) => {
         e.preventDefault();
@@ -506,6 +578,7 @@ function updateSheet(ss, sheetName, headers, rows) {
           setChangePasscodeError('❌ User passcode cannot be empty.');
           return;
         }
+
         localStorage.setItem('harmony_owner_passcode', newOwnerPinForm.trim());
         localStorage.setItem('harmony_user_passcode', newUserPinForm.trim());
         setOwnerPasscode(newOwnerPinForm.trim());
@@ -515,6 +588,7 @@ function updateSheet(ss, sheetName, headers, rows) {
         setChangePasscodeError('');
         alert(`✅ Security Passcodes successfully updated!\n\n👑 Owner Passcode: ${newOwnerPinForm.trim()}\n👤 User Passcode: ${newUserPinForm.trim()}`);
       };
+
       const handleClearAllStudents = () => {
         if (confirm('🧹 Are you sure you want to clear all student records from this device?')) {
           setStudents([]);
@@ -522,6 +596,7 @@ function updateSheet(ss, sheetName, headers, rows) {
           alert('✅ All student records cleared! Your app is now starting fresh.');
         }
       };
+
       const handleLoadSampleStudents = () => {
         if (confirm('📥 Load sample demo students?')) {
           const demo = generateInitialMusicStudents();
@@ -530,6 +605,7 @@ function updateSheet(ss, sheetName, headers, rows) {
           alert(`✅ Loaded ${demo.length} sample demo students.`);
         }
       };
+
       // Payment Status & Package Renewal Handler (Owner Only)
       const handleSetPaymentStatus = (studentId, newStatus) => {
         if (userRole !== 'owner') {
@@ -554,6 +630,7 @@ function updateSheet(ss, sheetName, headers, rows) {
         });
         setStudents(updatedList);
       };
+
       // Open Quick Class Progress Edit Modal (Owner Only)
       const handleOpenProgressEdit = (student) => {
         if (userRole !== 'owner') {
@@ -564,13 +641,16 @@ function updateSheet(ss, sheetName, headers, rows) {
         setCustomCompletedCount(student.completedClassesCount || 0);
         setCustomLastClassDate(student.lastClassDate || new Date().toISOString().split('T')[0]);
       };
+
       const handleSaveProgressEdit = (e) => {
         e.preventDefault();
         if (userRole !== 'owner') return;
         if (!studentForProgressEdit) return;
+
         const limit = getPackageLimit(studentForProgressEdit.packageType);
         const count = Math.max(0, Number(customCompletedCount) || 0);
         const isExpired = count >= limit;
+
         const updatedList = students.map(s => {
           if (s.id === studentForProgressEdit.id) {
             return {
@@ -582,10 +662,135 @@ function updateSheet(ss, sheetName, headers, rows) {
           }
           return s;
         });
+
         setStudents(updatedList);
         setStudentForProgressEdit(null);
         alert(`✅ Updated class progress for ${studentForProgressEdit.name}: ${count}/${limit} classes completed as of ${customLastClassDate}!`);
       };
+
+      // Reschedule Class Handlers (Owner Only)
+      const handleOpenRescheduleModal = (student) => {
+        if (userRole !== 'owner') {
+          alert('🔒 Permission Denied: User Mode is View-Only. Log in with Owner Passcode to reschedule classes.');
+          return;
+        }
+        setStudentForReschedule(student);
+        setRescheduleTargetDate(selectedDate);
+        setRescheduleOriginalDate(selectedDate);
+        setRescheduleReason('');
+        setIsRescheduleOpen(true);
+      };
+
+      const handleSaveReschedule = (e) => {
+        e.preventDefault();
+        if (userRole !== 'owner') return;
+        if (!studentForReschedule || !rescheduleTargetDate) return;
+
+        const newRescheduleItem = {
+          id: `resch_${Date.now()}`,
+          date: rescheduleTargetDate,
+          originalDate: rescheduleOriginalDate || selectedDate,
+          reason: rescheduleReason.trim() || 'Student request'
+        };
+
+        const updatedStudents = students.map(s => {
+          if (s.id === studentForReschedule.id) {
+            const existing = s.rescheduledClasses || [];
+            return {
+              ...s,
+              rescheduledClasses: [...existing, newRescheduleItem]
+            };
+          }
+          return s;
+        });
+
+        setStudents(updatedStudents);
+        setIsRescheduleOpen(false);
+        setStudentForReschedule(null);
+        alert(`🔄 Class rescheduled for ${studentForReschedule.name} to ${rescheduleTargetDate}!`);
+      };
+
+      const handleRemoveReschedule = (studentId, rescheduleId) => {
+        if (userRole !== 'owner') {
+          alert('🔒 Permission Denied: User Mode is View-Only.');
+          return;
+        }
+        const updatedStudents = students.map(s => {
+          if (s.id === studentId) {
+            return {
+              ...s,
+              rescheduledClasses: (s.rescheduledClasses || []).filter(r => r.id !== rescheduleId)
+            };
+          }
+          return s;
+        });
+        setStudents(updatedStudents);
+      };
+
+      // Extra Class Handlers (Owner Only)
+      const handleOpenExtraClassModal = (student) => {
+        if (userRole !== 'owner') {
+          alert('🔒 Permission Denied: User Mode is View-Only. Log in with Owner Passcode to log extra classes.');
+          return;
+        }
+        setStudentForExtraClass(student);
+        setExtraClassDate(selectedDate);
+        setExtraClassNotes('Extra practice session');
+        setIsExtraClassOpen(true);
+      };
+
+      const handleSaveExtraClass = (e) => {
+        e.preventDefault();
+        if (userRole !== 'owner') return;
+        if (!studentForExtraClass) return;
+
+        const newExtraItem = {
+          id: `extra_${Date.now()}`,
+          date: extraClassDate,
+          notes: extraClassNotes.trim() || 'Extra practice session'
+        };
+
+        const updatedStudents = students.map(s => {
+          if (s.id === studentForExtraClass.id) {
+            const existing = s.extraClasses || [];
+            const currentCount = s.completedClassesCount || 0;
+            const newCount = currentCount + 1;
+            const limit = getPackageLimit(s.packageType);
+            const isExpiredNow = newCount >= limit;
+
+            if (isExpiredNow) {
+              alert(`⚠️ ${s.name} has completed all ${limit} classes in their ${s.packageType || 'package'} after taking an extra class! Payment status is now set to PENDING for package renewal.`);
+            }
+
+            return {
+              ...s,
+              extraClasses: [...existing, newExtraItem],
+              completedClassesCount: newCount,
+              lastClassDate: extraClassDate,
+              feeStatus: isExpiredNow ? 'pending' : s.feeStatus
+            };
+          }
+          return s;
+        });
+
+        // Update attendance record for that date to 'extra'
+        const recIndex = attendance.findIndex(r => r.date === extraClassDate);
+        let updatedAttendance = [...attendance];
+        if (recIndex >= 0) {
+          const rec = { ...updatedAttendance[recIndex] };
+          rec.records = { ...rec.records, [studentForExtraClass.id]: 'extra' };
+          updatedAttendance[recIndex] = rec;
+        } else {
+          updatedAttendance.push({ id: `${extraClassDate}_All`, date: extraClassDate, className: 'All', records: { [studentForExtraClass.id]: 'extra' } });
+        }
+
+        setAttendance(updatedAttendance);
+        setStudents(updatedStudents);
+        setIsExtraClassOpen(false);
+        setStudentForExtraClass(null);
+        alert(`⭐ Extra class logged for ${studentForExtraClass.name} on ${extraClassDate}!`);
+      };
+
       const handleDobChange = (e, isEditing = false) => {
         const dobVal = e.target.value;
         const computedAge = calculateAge(dobVal);
@@ -595,6 +800,7 @@ function updateSheet(ss, sheetName, headers, rows) {
           setFormData({ ...formData, dob: dobVal, age: computedAge });
         }
       };
+
       const handleOpenEditStudent = (student) => {
         if (userRole !== 'owner') {
           alert('🔒 Permission Denied: User Mode is View-Only. Log in with the Owner Passcode to edit student profiles.');
@@ -603,6 +809,7 @@ function updateSheet(ss, sheetName, headers, rows) {
         setStudentToEdit({ ...student });
         setIsEditStudentOpen(true);
       };
+
       const handleSaveEditedStudent = (e) => {
         e.preventDefault();
         if (userRole !== 'owner') return;
@@ -611,18 +818,21 @@ function updateSheet(ss, sheetName, headers, rows) {
         const limit = getPackageLimit(studentToEdit.packageType);
         const count = Number(studentToEdit.completedClassesCount) || 0;
         const isExpired = count >= limit;
+
         const finalStudent = { 
           ...studentToEdit, 
           age: updatedAge,
           completedClassesCount: count,
           feeStatus: isExpired ? 'pending' : studentToEdit.feeStatus
         };
+
         const updatedList = students.map(s => s.id === studentToEdit.id ? finalStudent : s);
         setStudents(updatedList);
         setIsEditStudentOpen(false);
         setStudentToEdit(null);
         alert(`✅ Updated profile for ${finalStudent.name}!`);
       };
+
       const handleDeleteStudent = (id, name) => {
         if (userRole !== 'owner') {
           alert('🔒 Permission Denied: User Mode is View-Only. Log in with the Owner Passcode to delete student records.');
@@ -632,10 +842,12 @@ function updateSheet(ss, sheetName, headers, rows) {
           setStudents(students.filter(s => s.id !== id));
         }
       };
+
       const getStudentStatus = (studentId) => {
         const rec = attendance.find(r => r.date === selectedDate);
         return rec?.records?.[studentId] || 'unmarked';
       };
+
       // Automated Class-Count Expiry Logic on Attendance Marking (Owner Only)
       const setSingleAttendance = (studentId, status) => {
         if (userRole !== 'owner') {
@@ -644,8 +856,10 @@ function updateSheet(ss, sheetName, headers, rows) {
         }
         const recIndex = attendance.findIndex(r => r.date === selectedDate);
         let updated = [...attendance];
+
         const previousStatus = getStudentStatus(studentId);
         const isNewMark = (previousStatus === 'unmarked' || !previousStatus) && (status === 'present' || status === 'absent');
+
         if (recIndex >= 0) {
           const rec = { ...updated[recIndex] };
           rec.records = { ...rec.records, [studentId]: status };
@@ -654,6 +868,7 @@ function updateSheet(ss, sheetName, headers, rows) {
           updated.push({ id: `${selectedDate}_All`, date: selectedDate, className: 'All', records: { [studentId]: status } });
         }
         setAttendance(updated);
+
         // Auto Class Counter & Auto Status Expiry (Switching to PENDING when limit is reached)
         if (isNewMark) {
           const updatedStudents = students.map(s => {
@@ -662,9 +877,11 @@ function updateSheet(ss, sheetName, headers, rows) {
               const currentCount = s.completedClassesCount || 0;
               const newCount = currentCount + 1;
               const isExpiredNow = newCount >= limit;
+
               if (isExpiredNow) {
                 alert(`⚠️ ${s.name} has completed all ${limit} classes in their ${s.packageType || 'package'}! Payment status is now automatically set to PENDING for package renewal.`);
               }
+
               return {
                 ...s,
                 completedClassesCount: newCount,
@@ -677,6 +894,7 @@ function updateSheet(ss, sheetName, headers, rows) {
           setStudents(updatedStudents);
         }
       };
+
       const setBulkAttendance = (status) => {
         if (userRole !== 'owner') {
           alert('🔒 Permission Denied: User Mode is View-Only. Log in with the Owner Passcode to mark attendance.');
@@ -686,6 +904,7 @@ function updateSheet(ss, sheetName, headers, rows) {
         let updated = [...attendance];
         const newMap = recIndex >= 0 ? { ...updated[recIndex].records } : {};
         filteredStudents.forEach(s => { newMap[s.id] = status; });
+
         if (recIndex >= 0) {
           updated[recIndex].records = newMap;
         } else {
@@ -693,20 +912,37 @@ function updateSheet(ss, sheetName, headers, rows) {
         }
         setAttendance(updated);
       };
+
       const selectedDayName = getDayNameFromDate(selectedDate);
+
       const isStudentScheduledOnDate = (student, dateStr) => {
+        // Rescheduled classes check
+        if (student.rescheduledClasses && student.rescheduledClasses.some(r => r.date === dateStr)) {
+          return true;
+        }
+
+        // Extra classes check
+        if (student.extraClasses && student.extraClasses.some(e => e.date === dateStr)) {
+          return true;
+        }
+
         const dayFull = getDayNameFromDate(dateStr).toLowerCase();
         const dayShort = dayFull.slice(0, 3);
         const sched = (student.classDays || '').toLowerCase();
+
         if (!sched || sched.includes('flex') || sched.includes('all') || sched.includes('custom')) return true;
         if (sched.includes(dayFull) || sched.includes(dayShort)) return true;
+
         const existingStatus = getStudentStatus(student.id);
-        if (existingStatus === 'present' || existingStatus === 'absent') return true;
+        if (existingStatus === 'present' || existingStatus === 'absent' || existingStatus === 'extra') return true;
+
         return false;
       };
+
       const processRowsIntoStudents = (rows) => {
         if (!rows || rows.length < 2) return [];
         const headers = rows[0].map(h => String(h).trim().toLowerCase());
+
         const findCol = (possibleNames) => {
           for (let name of possibleNames) {
             const idx = headers.findIndex(h => h.includes(name));
@@ -714,6 +950,7 @@ function updateSheet(ss, sheetName, headers, rows) {
           }
           return -1;
         };
+
         const nameCol = findCol(['name', 'student name', 'full name', 'student']);
         const dobCol = findCol(['dob', 'date of birth', 'birth', 'birthdate']);
         const ageCol = findCol(['age']);
@@ -726,11 +963,14 @@ function updateSheet(ss, sheetName, headers, rows) {
         const pkgCol = findCol(['package', 'tuition package', 'plan', 'bundle']);
         const countCol = findCol(['completed classes', 'classes completed', 'classes used', 'completed', 'progress']);
         const lastDateCol = findCol(['last class date', 'class date', 'last date', 'payment date']);
+
         const actualNameCol = nameCol !== -1 ? nameCol : 0;
+
         const imported = [];
         for (let i = 1; i < rows.length; i++) {
           const row = rows[i];
           if (!row[actualNameCol] || String(row[actualNameCol]).trim() === '') continue;
+
           const name = String(row[actualNameCol]).trim();
           const dob = dobCol !== -1 && row[dobCol] ? String(row[dobCol]).trim() : '2005-01-01';
           const age = ageCol !== -1 && row[ageCol] ? Number(row[ageCol]) : calculateAge(dob);
@@ -742,16 +982,19 @@ function updateSheet(ss, sheetName, headers, rows) {
           let musicClass = 'Vocal Lessons';
           if (rawClass.toLowerCase().includes('piano')) musicClass = 'Piano Lessons';
           if (rawClass.toLowerCase().includes('app') || rawClass.toLowerCase().includes('ipad')) musicClass = 'App Lessons';
+
           let classDays = daysCol !== -1 && row[daysCol] ? String(row[daysCol]).trim() : 'Mon & Thu';
           
           let packageType = pkgCol !== -1 && row[pkgCol] ? String(row[pkgCol]).trim() : '4 Classes Package (₹6,000)';
           let packageAmount = packageType.includes('12') ? 15000 : 6000;
           let completedClassesCount = countCol !== -1 && row[countCol] ? (parseInt(row[countCol]) || 0) : 0;
           let lastClassDate = lastDateCol !== -1 && row[lastDateCol] ? String(row[lastDateCol]).trim() : new Date().toISOString().split('T')[0];
+
           let rawStatus = statusCol !== -1 && row[statusCol] ? String(row[statusCol]).trim().toLowerCase() : 'paid';
           let feeStatus = 'paid';
           if (rawStatus.includes('pend') || rawStatus.includes('due') || rawStatus.includes('unpaid')) feeStatus = 'pending';
           if (rawStatus.includes('overdue') || rawStatus.includes('late')) feeStatus = 'overdue';
+
           imported.push({
             id: `music_gs_${i}_${Date.now()}`,
             name,
@@ -772,6 +1015,7 @@ function updateSheet(ss, sheetName, headers, rows) {
         }
         return imported;
       };
+
       const handleFetchFromGoogleSheet = async () => {
         if (userRole !== 'owner') {
           alert('🔒 Permission Denied: User Mode is View-Only. Log in with the Owner Passcode to fetch sheet data.');
@@ -781,6 +1025,7 @@ function updateSheet(ss, sheetName, headers, rows) {
           setActiveTab('sheets');
           return;
         }
+
         setIsSyncing(true);
         try {
           let urlToFetch = sheetUrl.trim();
@@ -790,8 +1035,10 @@ function updateSheet(ss, sheetName, headers, rows) {
               urlToFetch = `https://docs.google.com/spreadsheets/d/${match[1]}/gviz/tq?tqx=out:csv`;
             }
           }
+
           const response = await fetch(urlToFetch, { redirect: 'follow' });
           const textData = await response.text();
+
           let parsedRows = [];
           try {
             const jsonData = JSON.parse(textData);
@@ -801,7 +1048,9 @@ function updateSheet(ss, sheetName, headers, rows) {
           } catch(e) {
             parsedRows = parseCSVRows(textData);
           }
+
           const importedStudents = processRowsIntoStudents(parsedRows);
+
           if (importedStudents.length > 0) {
             setStudents(importedStudents);
             localStorage.setItem('harmony_sheet_url', sheetUrl);
@@ -815,6 +1064,7 @@ function updateSheet(ss, sheetName, headers, rows) {
           setIsSyncing(false);
         }
       };
+
       const handleImportPastedData = () => {
         if (userRole !== 'owner') {
           alert('🔒 Permission Denied: User Mode is View-Only. Log in with the Owner Passcode to import data.');
@@ -832,6 +1082,7 @@ function updateSheet(ss, sheetName, headers, rows) {
           alert('Could not parse student records. Ensure copied text includes column headers.');
         }
       };
+
       const handlePushToGoogleSheet = async () => {
         if (userRole !== 'owner') {
           alert('🔒 Permission Denied: User Mode is View-Only. Log in with the Owner Passcode to push data to Google Sheet.');
@@ -854,12 +1105,14 @@ function updateSheet(ss, sheetName, headers, rows) {
               attendanceData.push([rec.date, stObj ? stObj.name : sId, stObj ? stObj.musicClass : '', st]);
             });
           });
+
           await fetch(sheetUrl, {
             method: 'POST',
             headers: { 'Content-Type': 'text/plain;charset=utf-8' },
             body: JSON.stringify({ type: 'SYNC_ALL', studentsHeaders, studentsData, attendanceHeaders, attendanceData }),
             mode: 'no-cors'
           });
+
           localStorage.setItem('harmony_sheet_url', sheetUrl);
           alert('✅ Google Sheet synced successfully with all student records & class counts!');
         } catch(err) {
@@ -868,6 +1121,7 @@ function updateSheet(ss, sheetName, headers, rows) {
           setIsSyncing(false);
         }
       };
+
       const filteredStudents = students.filter(s => {
         const matchesLesson = selectedLessonFilter === 'All' || s.musicClass === selectedLessonFilter;
         const matchesSearch = 
@@ -876,17 +1130,22 @@ function updateSheet(ss, sheetName, headers, rows) {
           s.phone.includes(searchQuery) ||
           (s.classDays && s.classDays.toLowerCase().includes(searchQuery.toLowerCase())) ||
           (s.packageType && s.packageType.toLowerCase().includes(searchQuery.toLowerCase()));
+
         const matchesDayOfWeek = (activeTab !== 'attendance' || !showOnlyTodayScheduled)
           ? true
           : isStudentScheduledOnDate(s, selectedDate);
+
         return matchesLesson && matchesSearch && matchesDayOfWeek;
       });
-      let presentCount = 0, absentCount = 0;
+
+      let presentCount = 0, absentCount = 0, extraCount = 0;
       filteredStudents.forEach(s => {
         const st = getStudentStatus(s.id);
         if (st === 'present') presentCount++;
         if (st === 'absent') absentCount++;
+        if (st === 'extra') extraCount++;
       });
+
       const renderPaymentButtonGroup = (student) => {
         const status = student.feeStatus;
         return (
@@ -907,6 +1166,7 @@ function updateSheet(ss, sheetName, headers, rows) {
             >
               ✓ PAID
             </button>
+
             <button
               onClick={() => handleSetPaymentStatus(student.id, 'pending')}
               style={{
@@ -922,6 +1182,7 @@ function updateSheet(ss, sheetName, headers, rows) {
             >
               ⏳ PENDING
             </button>
+
             <button
               onClick={() => handleSetPaymentStatus(student.id, 'overdue')}
               style={{
@@ -940,11 +1201,13 @@ function updateSheet(ss, sheetName, headers, rows) {
           </div>
         );
       };
+
       const renderClassProgressBar = (student) => {
         const limit = getPackageLimit(student.packageType);
         const count = student.completedClassesCount || 0;
         const isCompleted = count >= limit;
         const percentage = Math.min(100, Math.round((count / limit) * 100));
+
         return (
           <div style={{
             marginTop: '0.4rem',
@@ -974,6 +1237,7 @@ function updateSheet(ss, sheetName, headers, rows) {
           </div>
         );
       };
+
       // --- IF STUDIO IS LOCKED: SHOW DUAL PASSCODE LOCK SCREEN ---
       if (!isUnlocked) {
         return (
@@ -1001,12 +1265,14 @@ function updateSheet(ss, sheetName, headers, rows) {
               <div style={{ width: 64, height: 64, background: 'var(--primary-gradient)', borderRadius: '20px', display: 'grid', placeItems: 'center', margin: '0 auto 1.25rem', fontSize: '2rem', boxShadow: '0 8px 24px rgba(99, 102, 241, 0.4)' }}>
                 🔒
               </div>
+
               <h2 style={{ fontSize: '1.4rem', fontWeight: 800, color: 'white', marginBottom: '0.35rem' }}>
                 Music Production Studio
               </h2>
               <p style={{ fontSize: '0.85rem', color: '#94A3B8', marginBottom: '1.75rem' }}>
                 Enter Owner Passcode or User Passcode to continue
               </p>
+
               <form onSubmit={handleUnlockStudio} style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
                 <div>
                   <input
@@ -1031,10 +1297,12 @@ function updateSheet(ss, sheetName, headers, rows) {
                   />
                   {pinError && <p style={{ color: '#FCA5A5', fontSize: '0.8rem', marginTop: '0.5rem', fontWeight: 600 }}>{pinError}</p>}
                 </div>
+
                 <button type="submit" className="btn-primary" style={{ justifyContent: 'center', padding: '0.85rem', fontSize: '0.95rem' }}>
                   Unlock Studio Portal <i className="fa-solid fa-arrow-right"></i>
                 </button>
               </form>
+
               <div style={{ marginTop: '1.5rem', paddingTop: '1.25rem', borderTop: '1px solid rgba(255,255,255,0.1)', fontSize: '0.775rem', color: '#94A3B8', textAlign: 'center', display: 'flex', flexDirection: 'column', gap: '0.4rem' }}>
                 <div style={{ fontSize: '0.775rem', color: '#94A3B8', lineHeight: '1.6' }}>
                   👑 <strong>Owner Access</strong>: Full Admin Control & Settings<br />
@@ -1048,6 +1316,7 @@ function updateSheet(ss, sheetName, headers, rows) {
           </div>
         );
       }
+
       return (
         <div className="app-layout">
           {/* Mobile Top Header Navigation */}
@@ -1067,15 +1336,18 @@ function updateSheet(ss, sheetName, headers, rows) {
                 <h2 style={{ fontSize: '1.05rem', fontWeight: 800 }}>Music Production</h2>
               </div>
             </div>
+
             <button onClick={() => setIsAddStudentOpen(true)} className="btn-primary" style={{ padding: '0.45rem 0.85rem', fontSize: '0.8rem' }}>
               <i className="fa-solid fa-plus"></i> Add
             </button>
           </div>
+
           {/* Sidebar Backdrop Overlay on Mobile */}
           <div 
             className={`sidebar-overlay ${isMobileMenuOpen ? 'active' : ''}`}
             onClick={() => setIsMobileMenuOpen(false)}
           />
+
           {/* Main Sidebar */}
           <aside className={`sidebar ${isMobileMenuOpen ? 'open' : ''}`}>
             <div style={{ padding: '0.5rem 0.5rem 1.25rem', display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
@@ -1089,30 +1361,35 @@ function updateSheet(ss, sheetName, headers, rows) {
                 <span style={{ fontSize: '0.725rem', color: 'var(--text-muted)', fontWeight: 600 }}>Studio & Student Manager</span>
               </div>
             </div>
+
             <button 
               className={`nav-btn ${activeTab === 'attendance' ? 'active' : ''}`} 
               onClick={() => { setActiveTab('attendance'); setIsMobileMenuOpen(false); }}
             >
               <span><i className="fa-solid fa-calendar-check" style={{ marginRight: 10 }}></i> Attendance Register</span>
             </button>
+
             <button 
               className={`nav-btn ${activeTab === 'students' ? 'active' : ''}`} 
               onClick={() => { setActiveTab('students'); setIsMobileMenuOpen(false); }}
             >
               <span><i className="fa-solid fa-sliders" style={{ marginRight: 10 }}></i> Students ({students.length})</span>
             </button>
+
             <button 
               className={`nav-btn ${activeTab === 'fees' ? 'active' : ''}`} 
               onClick={() => { setActiveTab('fees'); setIsMobileMenuOpen(false); }}
             >
               <span><i className="fa-solid fa-credit-card" style={{ marginRight: 10 }}></i> Fee Payment Status</span>
             </button>
+
             <button 
               className={`nav-btn ${activeTab === 'sheets' ? 'active' : ''}`} 
               onClick={() => { setActiveTab('sheets'); setIsMobileMenuOpen(false); }}
             >
               <span><i className="fa-solid fa-file-excel" style={{ marginRight: 10 }}></i> Google Sheets Sync</span>
             </button>
+
             <div style={{ marginTop: 'auto', display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
               {userRole === 'owner' ? (
                 <button 
@@ -1132,6 +1409,7 @@ function updateSheet(ss, sheetName, headers, rows) {
                   <i className="fa-solid fa-lock" style={{ color: '#94A3B8' }}></i> 👤 User Mode (Settings Locked)
                 </div>
               )}
+
               <button 
                 onClick={handleLockStudio}
                 style={{ width: '100%', padding: '0.55rem', borderRadius: 'var(--radius-md)', border: '1px solid #FECACA', fontSize: '0.775rem', fontWeight: 700, color: '#B91C1C', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.4rem', background: '#FEF2F2' }}
@@ -1140,6 +1418,7 @@ function updateSheet(ss, sheetName, headers, rows) {
               </button>
             </div>
           </aside>
+
           {/* Main Content Area */}
           <div className="main-content">
             <header>
@@ -1160,6 +1439,7 @@ function updateSheet(ss, sheetName, headers, rows) {
                   🎧 Managing {students.length} Production Students • {userRole === 'owner' ? '👑 Full Access Unlocked' : '👤 User Access Activated'}
                 </p>
               </div>
+
               <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', flexWrap: 'wrap' }}>
                 <button 
                   onClick={handleFetchFromGoogleSheet} 
@@ -1169,6 +1449,7 @@ function updateSheet(ss, sheetName, headers, rows) {
                 >
                   <i className="fa-solid fa-cloud-arrow-down"></i> {isSyncing ? 'Fetching...' : 'Fetch Sheet'}
                 </button>
+
                 <button 
                   onClick={() => setIsPasteDataOpen(true)}
                   className="btn-secondary" 
@@ -1176,6 +1457,7 @@ function updateSheet(ss, sheetName, headers, rows) {
                 >
                   <i className="fa-solid fa-paste"></i> Paste Cells
                 </button>
+
                 <button 
                   onClick={handlePushToGoogleSheet} 
                   disabled={isSyncing}
@@ -1184,16 +1466,19 @@ function updateSheet(ss, sheetName, headers, rows) {
                 >
                   <i className="fa-solid fa-file-csv"></i> {sheetUrl ? (isSyncing ? 'Syncing...' : 'Sync Sheet') : 'Link Sheet'}
                 </button>
+
                 {userRole === 'owner' && (
                   <button onClick={() => setIsAddStudentOpen(true)} className="btn-primary" style={{ fontSize: '0.85rem' }}>
                     <i className="fa-solid fa-plus"></i> Add Student
                   </button>
                 )}
+
                 <button onClick={handleLockStudio} className="btn-secondary" style={{ padding: '0.65rem 0.85rem', color: '#B91C1C', borderColor: '#FECACA' }} title="Lock Studio Portal">
                   <i className="fa-solid fa-lock"></i>
                 </button>
               </div>
             </header>
+
             <div className="content-area">
               {/* VIEW-ONLY BANNER FOR USER ROLE */}
               {userRole !== 'owner' && (
@@ -1222,6 +1507,7 @@ function updateSheet(ss, sheetName, headers, rows) {
                   </button>
                 </div>
               )}
+
               {/* --- TAB 1: ATTENDANCE REGISTER --- */}
               {activeTab === 'attendance' && (
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
@@ -1235,6 +1521,7 @@ function updateSheet(ss, sheetName, headers, rows) {
                           Showing students scheduled for <strong>{selectedDayName}</strong>. Toggle filters to view all.
                         </p>
                       </div>
+
                       <div style={{ display: 'flex', gap: '0.5rem', width: '100%', maxWidth: '320px' }}>
                         <button onClick={() => setBulkAttendance('present')} className="badge badge-present" style={{ cursor: 'pointer', flex: 1, justifyContent: 'center', padding: '0.55rem' }}>
                           <i className="fa-solid fa-check-double"></i> Mark All Present
@@ -1244,12 +1531,14 @@ function updateSheet(ss, sheetName, headers, rows) {
                         </button>
                       </div>
                     </div>
+
                     {/* Filter Bar */}
                     <div className="filter-bar" style={{ display: 'grid', gridTemplateColumns: '1.2fr 1.6fr 1.3fr 1.8fr', gap: '1rem', paddingTop: '0.85rem', borderTop: '1px solid var(--border-color)' }}>
                       <div>
                         <label style={{ fontSize: '0.75rem', fontWeight: 700, color: 'var(--text-muted)', display: 'block', marginBottom: '0.25rem' }}>Date ({selectedDayName})</label>
                         <input type="date" value={selectedDate} onChange={(e) => setSelectedDate(e.target.value)} style={{ width: '100%', padding: '0.55rem', borderRadius: 'var(--radius-md)', border: '1px solid var(--border-color)', fontWeight: 600 }} />
                       </div>
+
                       <div>
                         <label style={{ fontSize: '0.75rem', fontWeight: 700, color: 'var(--text-muted)', display: 'block', marginBottom: '0.25rem' }}>Day Roster Filter</label>
                         <div style={{ display: 'flex', gap: '0.35rem' }}>
@@ -1284,6 +1573,7 @@ function updateSheet(ss, sheetName, headers, rows) {
                           </button>
                         </div>
                       </div>
+
                       <div>
                         <label style={{ fontSize: '0.75rem', fontWeight: 700, color: 'var(--text-muted)', display: 'block', marginBottom: '0.25rem' }}>Lesson Filter</label>
                         <select value={selectedLessonFilter} onChange={(e) => setSelectedLessonFilter(e.target.value)} style={{ width: '100%', padding: '0.55rem', borderRadius: 'var(--radius-md)', border: '1px solid var(--border-color)' }}>
@@ -1291,20 +1581,24 @@ function updateSheet(ss, sheetName, headers, rows) {
                           {MUSIC_LESSON_OPTIONS.map(c => <option key={c} value={c}>{c}</option>)}
                         </select>
                       </div>
+
                       <div>
                         <label style={{ fontSize: '0.75rem', fontWeight: 700, color: 'var(--text-muted)', display: 'block', marginBottom: '0.25rem' }}>Search Student</label>
                         <input type="text" placeholder="Search name or phone..." value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)} style={{ width: '100%', padding: '0.55rem 0.85rem', borderRadius: 'var(--radius-md)', border: '1px solid var(--border-color)' }} />
                       </div>
                     </div>
                   </div>
+
                   {/* Summary Bar */}
                   <div style={{ display: 'flex', gap: '0.75rem', alignItems: 'center', flexWrap: 'wrap' }}>
                     <span className="badge badge-present" style={{ fontSize: '0.85rem' }}>✓ {presentCount} Present</span>
                     <span className="badge badge-absent" style={{ fontSize: '0.85rem' }}>✗ {absentCount} Absent</span>
+                    {extraCount > 0 && <span className="badge" style={{ background: '#FFFBEB', color: '#B45309', border: '1px solid #FDE68A', fontSize: '0.85rem' }}>⭐ {extraCount} Extra</span>}
                     <span style={{ fontSize: '0.85rem', color: 'var(--text-main)', fontWeight: 600 }}>
                       Showing {filteredStudents.length} Students {showOnlyTodayScheduled ? `scheduled for ${selectedDayName}` : 'in total'}
                     </span>
                   </div>
+
                   {/* ATTENDANCE CARDS */}
                   <div className="student-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(330px, 1fr))', gap: '1rem' }}>
                     {filteredStudents.length === 0 ? (
@@ -1320,16 +1614,31 @@ function updateSheet(ss, sheetName, headers, rows) {
                         const st = getStudentStatus(student.id);
                         const isPresent = st === 'present';
                         const isAbsent = st === 'absent';
+                        const isExtra = st === 'extra';
+
+                        const reschForSelectedDate = (student.rescheduledClasses || []).filter(r => r.date === selectedDate);
+
                         return (
                           <div key={student.id} className="card" style={{
-                            borderLeft: isPresent ? '5px solid #10B981' : isAbsent ? '5px solid #EF4444' : '1px solid var(--border-color)',
-                            background: isPresent ? 'rgba(240, 253, 244, 0.85)' : isAbsent ? 'rgba(254, 242, 242, 0.85)' : 'rgba(255, 255, 255, 0.95)',
+                            borderLeft: isPresent ? '5px solid #10B981' : isAbsent ? '5px solid #EF4444' : isExtra ? '5px solid #D97706' : '1px solid var(--border-color)',
+                            background: isPresent ? 'rgba(240, 253, 244, 0.85)' : isAbsent ? 'rgba(254, 242, 242, 0.85)' : isExtra ? 'rgba(255, 251, 235, 0.85)' : 'rgba(255, 255, 255, 0.95)',
                             display: 'flex',
                             flexDirection: 'column',
                             justifyContent: 'space-between',
                             gap: '1rem'
                           }}>
                             <div>
+                              {reschForSelectedDate.map(resch => (
+                                <div key={resch.id} style={{ background: '#FFF7ED', border: '1px solid #FFEDD5', color: '#C2410C', padding: '0.4rem 0.65rem', borderRadius: 'var(--radius-md)', fontSize: '0.75rem', fontWeight: 700, display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '0.5rem' }}>
+                                  <span>🔄 <strong>Rescheduled Class</strong> (From: {resch.originalDate}) {resch.reason ? `• ${resch.reason}` : ''}</span>
+                                  {userRole === 'owner' && (
+                                    <button onClick={() => handleRemoveReschedule(student.id, resch.id)} style={{ color: '#EF4444', fontSize: '0.7rem', fontWeight: 800, cursor: 'pointer' }} title="Remove reschedule tag">
+                                      ✕
+                                    </button>
+                                  )}
+                                </div>
+                              ))}
+
                               <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '0.65rem' }}>
                                 <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
                                   <div style={{ width: 44, height: 44, borderRadius: '50%', background: student.avatarColor || 'var(--primary-gradient)', color: 'white', display: 'grid', placeItems: 'center', fontWeight: 800, fontSize: '1.05rem', boxShadow: '0 3px 10px rgba(0,0,0,0.1)' }}>
@@ -1342,6 +1651,7 @@ function updateSheet(ss, sheetName, headers, rows) {
                                     </div>
                                   </div>
                                 </div>
+
                                 {userRole === 'owner' && (
                                   <button 
                                     onClick={() => handleOpenEditStudent(student)}
@@ -1351,6 +1661,7 @@ function updateSheet(ss, sheetName, headers, rows) {
                                   </button>
                                 )}
                               </div>
+
                               <div style={{ background: 'rgba(248, 250, 252, 0.8)', padding: '0.65rem 0.75rem', borderRadius: 'var(--radius-md)', border: '1px solid var(--border-color)', fontSize: '0.775rem', color: 'var(--text-muted)', display: 'flex', flexDirection: 'column', gap: '0.4rem', marginBottom: '0.5rem' }}>
                                 <div style={{ display: 'flex', justifyContent: 'space-between', flexWrap: 'wrap', gap: '0.2rem' }}>
                                   <span>🗓️ Schedule: <strong style={{ color: 'var(--text-main)' }}>{student.classDays || 'Mon & Thu'}</strong></span>
@@ -1359,44 +1670,105 @@ function updateSheet(ss, sheetName, headers, rows) {
                                 <div>📞 {student.phone} | ✉️ {student.email}</div>
                                 
                                 {renderClassProgressBar(student)}
+
+                                {student.extraClasses && student.extraClasses.length > 0 && (
+                                  <div style={{ fontSize: '0.725rem', color: '#7E22CE', fontWeight: 700 }}>
+                                    ⭐ {student.extraClasses.length} Extra Class{student.extraClasses.length > 1 ? 'es' : ''} Recorded
+                                  </div>
+                                )}
+
                                 <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '0.4rem', marginTop: '0.15rem' }}>
                                   <span style={{ fontSize: '0.75rem', fontWeight: 700, color: 'var(--text-main)' }}>Payment:</span>
                                   {renderPaymentButtonGroup(student)}
                                 </div>
                               </div>
                             </div>
-                            {/* PRESENT / ABSENT BUTTONS */}
-                            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.5rem' }}>
-                              <button
-                                onClick={() => setSingleAttendance(student.id, 'present')}
-                                style={{
-                                  padding: '0.7rem',
-                                  borderRadius: 'var(--radius-md)',
-                                  fontWeight: 800,
-                                  fontSize: '0.85rem',
-                                  border: isPresent ? '2px solid #10B981' : '1px solid var(--present-border)',
-                                  background: isPresent ? '#10B981' : 'var(--present-bg)',
-                                  color: isPresent ? 'white' : 'var(--present-text)',
-                                  boxShadow: isPresent ? '0 3px 10px rgba(16, 185, 129, 0.3)' : 'none'
-                                }}
-                              >
-                                <i className="fa-solid fa-circle-check"></i> PRESENT
-                              </button>
-                              <button
-                                onClick={() => setSingleAttendance(student.id, 'absent')}
-                                style={{
-                                  padding: '0.7rem',
-                                  borderRadius: 'var(--radius-md)',
-                                  fontWeight: 800,
-                                  fontSize: '0.85rem',
-                                  border: isAbsent ? '2px solid #EF4444' : '1px solid var(--absent-border)',
-                                  background: isAbsent ? '#EF4444' : 'var(--absent-bg)',
-                                  color: isAbsent ? 'white' : 'var(--absent-text)',
-                                  boxShadow: isAbsent ? '0 3px 10px rgba(239, 68, 68, 0.3)' : 'none'
-                                }}
-                              >
-                                <i className="fa-solid fa-circle-xmark"></i> ABSENT
-                              </button>
+
+                            {/* PRESENT / ABSENT / EXTRA & ACTION BUTTONS */}
+                            <div style={{ display: 'flex', flexDirection: 'column', gap: '0.4rem' }}>
+                              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '0.35rem' }}>
+                                <button
+                                  onClick={() => setSingleAttendance(student.id, 'present')}
+                                  style={{
+                                    padding: '0.6rem 0.35rem',
+                                    borderRadius: 'var(--radius-md)',
+                                    fontWeight: 800,
+                                    fontSize: '0.775rem',
+                                    border: isPresent ? '2px solid #10B981' : '1px solid var(--present-border)',
+                                    background: isPresent ? '#10B981' : 'var(--present-bg)',
+                                    color: isPresent ? 'white' : 'var(--present-text)',
+                                    boxShadow: isPresent ? '0 3px 10px rgba(16, 185, 129, 0.3)' : 'none'
+                                  }}
+                                >
+                                  ✓ PRESENT
+                                </button>
+
+                                <button
+                                  onClick={() => setSingleAttendance(student.id, 'absent')}
+                                  style={{
+                                    padding: '0.6rem 0.35rem',
+                                    borderRadius: 'var(--radius-md)',
+                                    fontWeight: 800,
+                                    fontSize: '0.775rem',
+                                    border: isAbsent ? '2px solid #EF4444' : '1px solid var(--absent-border)',
+                                    background: isAbsent ? '#EF4444' : 'var(--absent-bg)',
+                                    color: isAbsent ? 'white' : 'var(--absent-text)',
+                                    boxShadow: isAbsent ? '0 3px 10px rgba(239, 68, 68, 0.3)' : 'none'
+                                  }}
+                                >
+                                  ✗ ABSENT
+                                </button>
+
+                                <button
+                                  onClick={() => setSingleAttendance(student.id, 'extra')}
+                                  style={{
+                                    padding: '0.6rem 0.35rem',
+                                    borderRadius: 'var(--radius-md)',
+                                    fontWeight: 800,
+                                    fontSize: '0.775rem',
+                                    border: isExtra ? '2px solid #D97706' : '1px solid #FDE68A',
+                                    background: isExtra ? '#D97706' : '#FFFBEB',
+                                    color: isExtra ? 'white' : '#B45309',
+                                    boxShadow: isExtra ? '0 3px 10px rgba(217, 119, 6, 0.3)' : 'none'
+                                  }}
+                                >
+                                  ⭐ EXTRA
+                                </button>
+                              </div>
+
+                              {userRole === 'owner' && (
+                                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.35rem' }}>
+                                  <button
+                                    onClick={() => handleOpenRescheduleModal(student)}
+                                    style={{
+                                      padding: '0.4rem 0.5rem',
+                                      borderRadius: 'var(--radius-md)',
+                                      fontWeight: 700,
+                                      fontSize: '0.725rem',
+                                      border: '1px solid #FFEDD5',
+                                      background: '#FFF7ED',
+                                      color: '#C2410C'
+                                    }}
+                                  >
+                                    🔄 Reschedule
+                                  </button>
+
+                                  <button
+                                    onClick={() => handleOpenExtraClassModal(student)}
+                                    style={{
+                                      padding: '0.4rem 0.5rem',
+                                      borderRadius: 'var(--radius-md)',
+                                      fontWeight: 700,
+                                      fontSize: '0.725rem',
+                                      border: '1px solid #E9D5FF',
+                                      background: '#FAF5FF',
+                                      color: '#7E22CE'
+                                    }}
+                                  >
+                                    ⭐ Log Extra
+                                  </button>
+                                </div>
+                              )}
                             </div>
                           </div>
                         );
@@ -1405,6 +1777,7 @@ function updateSheet(ss, sheetName, headers, rows) {
                   </div>
                 </div>
               )}
+
               {/* --- TAB 2: STUDENT DIRECTORY --- */}
               {activeTab === 'students' && (
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
@@ -1424,6 +1797,7 @@ function updateSheet(ss, sheetName, headers, rows) {
                       </button>
                     </div>
                   </div>
+
                   <div className="student-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(330px, 1fr))', gap: '1rem' }}>
                     {filteredStudents.length === 0 ? (
                       <div className="card" style={{ gridColumn: '1 / -1', padding: '3.5rem 1.5rem', textAlign: 'center', color: 'var(--text-muted)' }}>
@@ -1452,12 +1826,14 @@ function updateSheet(ss, sheetName, headers, rows) {
                                   <span style={{ fontSize: '0.8rem', color: 'var(--primary)', fontWeight: 700 }}>{s.musicClass}</span>
                                 </div>
                               </div>
+
                               {userRole === 'owner' && (
                                 <button onClick={() => handleOpenEditStudent(s)} className="btn-edit">
                                   <i className="fa-solid fa-user-pen"></i> Edit
                                 </button>
                               )}
                             </div>
+
                             <div style={{ background: 'rgba(248, 250, 252, 0.8)', padding: '0.85rem', borderRadius: 'var(--radius-md)', border: '1px solid var(--border-color)', fontSize: '0.825rem', display: 'flex', flexDirection: 'column', gap: '0.45rem' }}>
                               <div><strong>🎵 Lesson Option:</strong> <strong style={{ color: 'var(--primary)' }}>{s.musicClass}</strong></div>
                               <div><strong>📦 Tuition Package:</strong> <strong style={{ color: '#7E22CE' }}>{s.packageType || '4 Classes Package (₹6,000)'}</strong></div>
@@ -1468,15 +1844,43 @@ function updateSheet(ss, sheetName, headers, rows) {
                               <div><strong>📅 Joining Date:</strong> {s.joiningDate}</div>
                               
                               {renderClassProgressBar(s)}
+
+                              {s.rescheduledClasses && s.rescheduledClasses.length > 0 && (
+                                <div style={{ fontSize: '0.725rem', color: '#C2410C', fontWeight: 700 }}>
+                                  🔄 {s.rescheduledClasses.length} Rescheduled Class{s.rescheduledClasses.length > 1 ? 'es' : ''}
+                                </div>
+                              )}
+
+                              {s.extraClasses && s.extraClasses.length > 0 && (
+                                <div style={{ fontSize: '0.725rem', color: '#7E22CE', fontWeight: 700 }}>
+                                  ⭐ {s.extraClasses.length} Extra Class{s.extraClasses.length > 1 ? 'es' : ''} Recorded
+                                </div>
+                              )}
+
                               <div style={{ marginTop: '0.35rem', paddingTop: '0.45rem', borderTop: '1px solid var(--border-color)', display: 'flex', flexDirection: 'column', gap: '0.35rem' }}>
                                 <span style={{ fontSize: '0.75rem', fontWeight: 700, color: 'var(--text-muted)' }}>Payment Status:</span>
                                 {renderPaymentButtonGroup(s)}
                               </div>
                             </div>
                           </div>
+
                           {userRole === 'owner' && (
-                            <div style={{ display: 'flex', justifyContent: 'flex-end', alignItems: 'center', paddingTop: '0.4rem', borderTop: '1px solid var(--border-color)' }}>
-                              <button onClick={() => handleDeleteStudent(s.id, s.name)} style={{ color: '#EF4444', fontSize: '0.8rem', fontWeight: 600 }}>
+                            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', paddingTop: '0.4rem', borderTop: '1px solid var(--border-color)', flexWrap: 'wrap', gap: '0.4rem' }}>
+                              <div style={{ display: 'flex', gap: '0.35rem' }}>
+                                <button
+                                  onClick={() => handleOpenRescheduleModal(s)}
+                                  style={{ padding: '0.3rem 0.5rem', borderRadius: 'var(--radius-md)', fontSize: '0.725rem', fontWeight: 700, background: '#FFF7ED', color: '#C2410C', border: '1px solid #FFEDD5' }}
+                                >
+                                  🔄 Reschedule
+                                </button>
+                                <button
+                                  onClick={() => handleOpenExtraClassModal(s)}
+                                  style={{ padding: '0.3rem 0.5rem', borderRadius: 'var(--radius-md)', fontSize: '0.725rem', fontWeight: 700, background: '#FAF5FF', color: '#7E22CE', border: '1px solid #E9D5FF' }}
+                                >
+                                  ⭐ Log Extra
+                                </button>
+                              </div>
+                              <button onClick={() => handleDeleteStudent(s.id, s.name)} style={{ color: '#EF4444', fontSize: '0.75rem', fontWeight: 600 }}>
                                 <i className="fa-solid fa-trash-can" style={{ marginRight: 4 }}></i> Delete Record
                               </button>
                             </div>
@@ -1487,6 +1891,7 @@ function updateSheet(ss, sheetName, headers, rows) {
                   </div>
                 </div>
               )}
+
               {/* --- TAB 3: FEE PAYMENT STATUS --- */}
               {activeTab === 'fees' && (
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
@@ -1497,6 +1902,7 @@ function updateSheet(ss, sheetName, headers, rows) {
                         <p style={{ fontSize: '0.825rem', color: 'var(--text-muted)' }}>Overview of 4-class (₹6,000) and 12-class (₹15,000) package payment statuses.</p>
                       </div>
                     </div>
+
                     <div className="table-responsive">
                       <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left', fontSize: '0.875rem', minWidth: '750px' }}>
                         <thead>
@@ -1515,6 +1921,7 @@ function updateSheet(ss, sheetName, headers, rows) {
                             const limit = getPackageLimit(s.packageType);
                             const count = s.completedClassesCount || 0;
                             const isExpired = count >= limit;
+
                             return (
                               <tr key={s.id} style={{ borderBottom: '1px solid var(--border-color)' }}>
                                 <td style={{ padding: '0.75rem', fontWeight: 700 }}>{s.name}</td>
@@ -1548,6 +1955,7 @@ function updateSheet(ss, sheetName, headers, rows) {
                   </div>
                 </div>
               )}
+
               {/* --- TAB 4: GOOGLE SHEETS SYNC --- */}
               {activeTab === 'sheets' && (
                 <div className="card" style={{ maxWidth: '750px', margin: '0 auto', display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
@@ -1557,6 +1965,7 @@ function updateSheet(ss, sheetName, headers, rows) {
                       Syncs Vocal/Piano/App Lessons, 4-class (₹6,000) & 12-class (₹15,000) packages, class counters, last class dates, and payment status.
                     </p>
                   </div>
+
                   <div>
                     <label style={{ fontSize: '0.8rem', fontWeight: 700, color: 'var(--text-main)', display: 'block', marginBottom: '0.35rem' }}>
                       Google Sheet URL or Apps Script URL
@@ -1569,6 +1978,7 @@ function updateSheet(ss, sheetName, headers, rows) {
                       style={{ width: '100%', padding: '0.7rem 0.85rem', borderRadius: 'var(--radius-md)', border: '1px solid var(--border-color)' }}
                     />
                   </div>
+
                   <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '1rem' }}>
                     <button 
                       onClick={handleFetchFromGoogleSheet} 
@@ -1578,6 +1988,7 @@ function updateSheet(ss, sheetName, headers, rows) {
                     >
                       <i className="fa-solid fa-cloud-arrow-down"></i> 📥 Fetch Data
                     </button>
+
                     <button 
                       onClick={handlePushToGoogleSheet} 
                       disabled={isSyncing}
@@ -1587,6 +1998,7 @@ function updateSheet(ss, sheetName, headers, rows) {
                       <i className="fa-solid fa-cloud-arrow-up"></i> 📤 Push App Data
                     </button>
                   </div>
+
                   <div style={{ background: '#FAF5FF', border: '1px solid #E9D5FF', borderRadius: 'var(--radius-md)', padding: '1rem', display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
                     <div>
                       <h4 style={{ fontSize: '0.9rem', fontWeight: 700, color: '#7E22CE' }}>⚡ Instant Import: Copy & Paste Sheet Cells</h4>
@@ -1596,6 +2008,7 @@ function updateSheet(ss, sheetName, headers, rows) {
                       Paste Cells Now
                     </button>
                   </div>
+
                   <div style={{ background: 'var(--bg-app)', padding: '1rem', borderRadius: 'var(--radius-md)', border: '1px solid var(--border-color)', fontSize: '0.825rem' }}>
                     <h4 style={{ fontWeight: 700, marginBottom: '0.35rem' }}>Google Apps Script Code:</h4>
                     <textarea readOnly value={APPS_SCRIPT_CODE} style={{ width: '100%', height: '120px', fontFamily: 'monospace', fontSize: '0.75rem', padding: '0.5rem' }} />
@@ -1604,6 +2017,7 @@ function updateSheet(ss, sheetName, headers, rows) {
               )}
             </div>
           </div>
+
           {/* QUICK CLASS PROGRESS EDIT MODAL */}
           {studentForProgressEdit && (
             <div className="modal-overlay">
@@ -1618,6 +2032,7 @@ function updateSheet(ss, sheetName, headers, rows) {
                       <strong>Student:</strong> {studentForProgressEdit.name}<br />
                       <strong>Package:</strong> {studentForProgressEdit.packageType || '4 Classes Package (₹6,000)'} (Limit: {getPackageLimit(studentForProgressEdit.packageType)} classes)
                     </div>
+
                     <div>
                       <label style={{ fontSize: '0.8rem', fontWeight: 700, display: 'block', marginBottom: '0.3rem' }}>Classes Completed So Far *</label>
                       <input
@@ -1630,6 +2045,7 @@ function updateSheet(ss, sheetName, headers, rows) {
                         style={{ width: '100%', padding: '0.65rem', borderRadius: 'var(--radius-md)', border: '1px solid var(--border-color)', fontSize: '1.1rem', fontWeight: 800, color: 'var(--primary)' }}
                       />
                     </div>
+
                     <div>
                       <label style={{ fontSize: '0.8rem', fontWeight: 700, display: 'block', marginBottom: '0.3rem' }}>As of Date (Last Class / Payment Date) *</label>
                       <input
@@ -1649,6 +2065,7 @@ function updateSheet(ss, sheetName, headers, rows) {
               </div>
             </div>
           )}
+
           {/* CHANGE PASSCODE MODAL (PROTECTED BY OWNER VERIFICATION) */}
           {isChangePasscodeOpen && (
             <div className="modal-overlay">
@@ -1662,11 +2079,13 @@ function updateSheet(ss, sheetName, headers, rows) {
                     <div style={{ background: '#EEF2FF', padding: '0.75rem', borderRadius: 'var(--radius-md)', fontSize: '0.8rem', color: '#4F46E5', fontWeight: 600 }}>
                       <i className="fa-solid fa-shield-halved" style={{ marginRight: 5 }}></i> Verify current Owner Passcode to update security passcodes for both Owner & User access.
                     </div>
+
                     {changePasscodeError && (
                       <div style={{ background: '#FEF2F2', border: '1px solid #FECACA', padding: '0.65rem', borderRadius: 'var(--radius-md)', fontSize: '0.8rem', color: '#B91C1C', fontWeight: 700 }}>
                         {changePasscodeError}
                       </div>
                     )}
+
                     <div>
                       <label style={{ fontSize: '0.8rem', fontWeight: 700, display: 'block', marginBottom: '0.3rem' }}>Verify Current Owner Passcode *</label>
                       <input 
@@ -1678,6 +2097,7 @@ function updateSheet(ss, sheetName, headers, rows) {
                         style={{ width: '100%', padding: '0.65rem', borderRadius: 'var(--radius-md)', border: '1px solid var(--border-color)' }} 
                       />
                     </div>
+
                     <div style={{ borderTop: '1px solid var(--border-color)', paddingTop: '0.75rem', display: 'flex', flexDirection: 'column', gap: '0.85rem' }}>
                       <div>
                         <label style={{ fontSize: '0.8rem', fontWeight: 700, display: 'block', marginBottom: '0.3rem', color: '#4F46E5' }}>👑 New Owner Passcode (Full Admin Access) *</label>
@@ -1690,6 +2110,7 @@ function updateSheet(ss, sheetName, headers, rows) {
                           style={{ width: '100%', padding: '0.65rem', borderRadius: 'var(--radius-md)', border: '1px solid #C7D2FE', fontWeight: 700 }}
                         />
                       </div>
+
                       <div>
                         <label style={{ fontSize: '0.8rem', fontWeight: 700, display: 'block', marginBottom: '0.3rem', color: '#059669' }}>👤 New User Passcode (Restricted User Access) *</label>
                         <input 
@@ -1711,6 +2132,7 @@ function updateSheet(ss, sheetName, headers, rows) {
               </div>
             </div>
           )}
+
           {/* PASTE SHEET DATA MODAL */}
           {isPasteDataOpen && (
             <div className="modal-overlay">
@@ -1738,6 +2160,7 @@ function updateSheet(ss, sheetName, headers, rows) {
               </div>
             </div>
           )}
+
           {/* ADD NEW STUDENT MODAL */}
           {isAddStudentOpen && (
             <div className="modal-overlay">
@@ -1753,6 +2176,7 @@ function updateSheet(ss, sheetName, headers, rows) {
                   const count = Number(formData.completedClassesCount) || 0;
                   const limit = getPackageLimit(formData.packageType);
                   const isExpired = count >= limit;
+
                   const newSt = {
                     id: `music_std_${Date.now()}`,
                     name: formData.name,
@@ -1786,6 +2210,7 @@ function updateSheet(ss, sheetName, headers, rows) {
                         style={{ width: '100%', padding: '0.65rem', borderRadius: 'var(--radius-md)', border: '1px solid var(--border-color)' }} 
                       />
                     </div>
+
                     <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.75rem' }}>
                       <div>
                         <label style={{ fontSize: '0.8rem', fontWeight: 700, display: 'block', marginBottom: '0.2rem' }}>Date of Birth *</label>
@@ -1807,6 +2232,7 @@ function updateSheet(ss, sheetName, headers, rows) {
                         />
                       </div>
                     </div>
+
                     <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.75rem' }}>
                       <div>
                         <label style={{ fontSize: '0.8rem', fontWeight: 700, display: 'block', marginBottom: '0.2rem' }}>Email ID *</label>
@@ -1831,6 +2257,7 @@ function updateSheet(ss, sheetName, headers, rows) {
                         />
                       </div>
                     </div>
+
                     <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.75rem' }}>
                       <div>
                         <label style={{ fontSize: '0.8rem', fontWeight: 700, display: 'block', marginBottom: '0.2rem' }}>Lesson Option *</label>
@@ -1842,6 +2269,7 @@ function updateSheet(ss, sheetName, headers, rows) {
                           {MUSIC_LESSON_OPTIONS.map(c => <option key={c} value={c}>{c}</option>)}
                         </select>
                       </div>
+
                       <div>
                         <label style={{ fontSize: '0.8rem', fontWeight: 700, display: 'block', marginBottom: '0.2rem' }}>Tuition Package *</label>
                         <select 
@@ -1856,6 +2284,7 @@ function updateSheet(ss, sheetName, headers, rows) {
                         </select>
                       </div>
                     </div>
+
                     {/* EXISTING / PREVIOUS CLASS HISTORY ENTRY */}
                     <div style={{ background: '#FAF5FF', border: '1px solid #E9D5FF', padding: '0.75rem', borderRadius: 'var(--radius-md)', display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.75rem' }}>
                       <div>
@@ -1881,6 +2310,7 @@ function updateSheet(ss, sheetName, headers, rows) {
                         />
                       </div>
                     </div>
+
                     <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '0.75rem' }}>
                       <div>
                         <label style={{ fontSize: '0.8rem', fontWeight: 700, display: 'block', marginBottom: '0.2rem' }}>Weekly Schedule</label>
@@ -1893,6 +2323,7 @@ function updateSheet(ss, sheetName, headers, rows) {
                           style={{ width: '100%', padding: '0.65rem', borderRadius: 'var(--radius-md)', border: '1px solid var(--border-color)' }}
                         />
                       </div>
+
                       <div>
                         <label style={{ fontSize: '0.8rem', fontWeight: 700, display: 'block', marginBottom: '0.2rem' }}>Joining Date</label>
                         <input 
@@ -1902,6 +2333,7 @@ function updateSheet(ss, sheetName, headers, rows) {
                           style={{ width: '100%', padding: '0.65rem', borderRadius: 'var(--radius-md)', border: '1px solid var(--border-color)' }} 
                         />
                       </div>
+
                       <div>
                         <label style={{ fontSize: '0.8rem', fontWeight: 700, display: 'block', marginBottom: '0.2rem' }}>Payment Status</label>
                         <select 
@@ -1924,6 +2356,7 @@ function updateSheet(ss, sheetName, headers, rows) {
               </div>
             </div>
           )}
+
           {/* EDIT STUDENT MODAL */}
           {isEditStudentOpen && studentToEdit && (
             <div className="modal-overlay">
@@ -1944,6 +2377,7 @@ function updateSheet(ss, sheetName, headers, rows) {
                         style={{ width: '100%', padding: '0.65rem', borderRadius: 'var(--radius-md)', border: '1px solid var(--border-color)' }}
                       />
                     </div>
+
                     <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.75rem' }}>
                       <div>
                         <label style={{ fontSize: '0.8rem', fontWeight: 700, display: 'block', marginBottom: '0.2rem' }}>Date of Birth *</label>
@@ -1965,6 +2399,7 @@ function updateSheet(ss, sheetName, headers, rows) {
                         />
                       </div>
                     </div>
+
                     <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.75rem' }}>
                       <div>
                         <label style={{ fontSize: '0.8rem', fontWeight: 700, display: 'block', marginBottom: '0.2rem' }}>Email ID *</label>
@@ -1987,6 +2422,7 @@ function updateSheet(ss, sheetName, headers, rows) {
                         />
                       </div>
                     </div>
+
                     <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.75rem' }}>
                       <div>
                         <label style={{ fontSize: '0.8rem', fontWeight: 700, display: 'block', marginBottom: '0.2rem' }}>Lesson Option *</label>
@@ -1998,6 +2434,7 @@ function updateSheet(ss, sheetName, headers, rows) {
                           {MUSIC_LESSON_OPTIONS.map(c => <option key={c} value={c}>{c}</option>)}
                         </select>
                       </div>
+
                       <div>
                         <label style={{ fontSize: '0.8rem', fontWeight: 700, display: 'block', marginBottom: '0.2rem' }}>Tuition Package *</label>
                         <select
@@ -2012,6 +2449,7 @@ function updateSheet(ss, sheetName, headers, rows) {
                         </select>
                       </div>
                     </div>
+
                     {/* EDIT EXISTING CLASS HISTORY */}
                     <div style={{ background: '#FAF5FF', border: '1px solid #E9D5FF', padding: '0.75rem', borderRadius: 'var(--radius-md)', display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.75rem' }}>
                       <div>
@@ -2037,6 +2475,7 @@ function updateSheet(ss, sheetName, headers, rows) {
                         />
                       </div>
                     </div>
+
                     <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '0.75rem' }}>
                       <div>
                         <label style={{ fontSize: '0.8rem', fontWeight: 700, display: 'block', marginBottom: '0.2rem' }}>Weekly Schedule</label>
@@ -2048,6 +2487,7 @@ function updateSheet(ss, sheetName, headers, rows) {
                           style={{ width: '100%', padding: '0.65rem', borderRadius: 'var(--radius-md)', border: '1px solid var(--border-color)' }}
                         />
                       </div>
+
                       <div>
                         <label style={{ fontSize: '0.8rem', fontWeight: 700, display: 'block', marginBottom: '0.2rem' }}>Joining Date</label>
                         <input
@@ -2079,9 +2519,114 @@ function updateSheet(ss, sheetName, headers, rows) {
               </div>
             </div>
           )}
+
+          {/* RESCHEDULE CLASS MODAL */}
+          {isRescheduleOpen && studentForReschedule && (
+            <div className="modal-overlay">
+              <div className="modal-content" style={{ maxWidth: '460px' }}>
+                <div className="modal-header">
+                  <h3 style={{ fontSize: '1.2rem', fontWeight: 800 }}>🔄 Reschedule Student Class</h3>
+                  <button onClick={() => setIsRescheduleOpen(false)} style={{ fontSize: '1.2rem' }}>✕</button>
+                </div>
+                <form onSubmit={handleSaveReschedule}>
+                  <div className="modal-body" style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+                    <div style={{ background: '#FFF7ED', border: '1px solid #FFEDD5', padding: '0.75rem', borderRadius: 'var(--radius-md)', fontSize: '0.85rem', color: '#C2410C' }}>
+                      <strong>Student:</strong> {studentForReschedule.name}<br />
+                      <strong>Regular Schedule:</strong> {studentForReschedule.classDays || 'Mon & Thu'}
+                    </div>
+
+                    <div>
+                      <label style={{ fontSize: '0.8rem', fontWeight: 700, display: 'block', marginBottom: '0.3rem' }}>Original Scheduled Date *</label>
+                      <input
+                        type="date"
+                        required
+                        value={rescheduleOriginalDate}
+                        onChange={(e) => setRescheduleOriginalDate(e.target.value)}
+                        style={{ width: '100%', padding: '0.65rem', borderRadius: 'var(--radius-md)', border: '1px solid var(--border-color)' }}
+                      />
+                    </div>
+
+                    <div>
+                      <label style={{ fontSize: '0.8rem', fontWeight: 700, display: 'block', marginBottom: '0.3rem' }}>New Rescheduled Date *</label>
+                      <input
+                        type="date"
+                        required
+                        value={rescheduleTargetDate}
+                        onChange={(e) => setRescheduleTargetDate(e.target.value)}
+                        style={{ width: '100%', padding: '0.65rem', borderRadius: 'var(--radius-md)', border: '1px solid #F97316', fontWeight: 700, color: '#C2410C' }}
+                      />
+                    </div>
+
+                    <div>
+                      <label style={{ fontSize: '0.8rem', fontWeight: 700, display: 'block', marginBottom: '0.3rem' }}>Reason for Rescheduling (Optional)</label>
+                      <input
+                        type="text"
+                        placeholder="e.g. Sick leave, Travel, Personal request"
+                        value={rescheduleReason}
+                        onChange={(e) => setRescheduleReason(e.target.value)}
+                        style={{ width: '100%', padding: '0.65rem', borderRadius: 'var(--radius-md)', border: '1px solid var(--border-color)' }}
+                      />
+                    </div>
+                  </div>
+                  <div className="modal-footer">
+                    <button type="button" className="btn-secondary" onClick={() => setIsRescheduleOpen(false)}>Cancel</button>
+                    <button type="submit" className="btn-primary" style={{ background: 'linear-gradient(135deg, #EA580C, #C2410C)' }}>Confirm Reschedule</button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          )}
+
+          {/* LOG EXTRA CLASS MODAL */}
+          {isExtraClassOpen && studentForExtraClass && (
+            <div className="modal-overlay">
+              <div className="modal-content" style={{ maxWidth: '460px' }}>
+                <div className="modal-header">
+                  <h3 style={{ fontSize: '1.2rem', fontWeight: 800 }}>⭐ Record Extra Class</h3>
+                  <button onClick={() => setIsExtraClassOpen(false)} style={{ fontSize: '1.2rem' }}>✕</button>
+                </div>
+                <form onSubmit={handleSaveExtraClass}>
+                  <div className="modal-body" style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+                    <div style={{ background: '#FAF5FF', border: '1px solid #E9D5FF', padding: '0.75rem', borderRadius: 'var(--radius-md)', fontSize: '0.85rem', color: '#7E22CE' }}>
+                      <strong>Student:</strong> {studentForExtraClass.name}<br />
+                      <strong>Current Package:</strong> {studentForExtraClass.packageType || '4 Classes Package (₹6,000)'} ({studentForExtraClass.completedClassesCount || 0} classes completed)
+                    </div>
+
+                    <div>
+                      <label style={{ fontSize: '0.8rem', fontWeight: 700, display: 'block', marginBottom: '0.3rem' }}>Extra Class Date *</label>
+                      <input
+                        type="date"
+                        required
+                        value={extraClassDate}
+                        onChange={(e) => setExtraClassDate(e.target.value)}
+                        style={{ width: '100%', padding: '0.65rem', borderRadius: 'var(--radius-md)', border: '1px solid #D8B4FE', fontWeight: 700, color: '#7E22CE' }}
+                      />
+                    </div>
+
+                    <div>
+                      <label style={{ fontSize: '0.8rem', fontWeight: 700, display: 'block', marginBottom: '0.3rem' }}>Class Topic / Notes (Optional)</label>
+                      <input
+                        type="text"
+                        placeholder="e.g. Extra exam prep, vocal warmups, catch-up session"
+                        value={extraClassNotes}
+                        onChange={(e) => setExtraClassNotes(e.target.value)}
+                        style={{ width: '100%', padding: '0.65rem', borderRadius: 'var(--radius-md)', border: '1px solid var(--border-color)' }}
+                      />
+                    </div>
+                  </div>
+                  <div className="modal-footer">
+                    <button type="button" className="btn-secondary" onClick={() => setIsExtraClassOpen(false)}>Cancel</button>
+                    <button type="submit" className="btn-primary" style={{ background: 'linear-gradient(135deg, #7E22CE, #6B21A8)' }}>Save Extra Class</button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          )}
+
         </div>
       );
     }
+
     ReactDOM.createRoot(document.getElementById('root')).render(<App />);
   </script>
 </body>
